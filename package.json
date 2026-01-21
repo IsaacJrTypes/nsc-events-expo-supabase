@@ -9,12 +9,14 @@
     "start:web": "expo start --web",
     "start:web:cache": "expo start --web -c",
     "db:start": "npx supabase start",
-    "db:start:mac": "export DOCKER_DEFAULT_PLATFORM=linux/amd64 npx supabase start",
+    "db:start:mac": "export DOCKER_DEFAULT_PLATFORM=linux/amd64 && npx supabase start",
     "db:start:debug": "npx supabase start --debug",
-    "db:start:mac:debug": "export DOCKER_DEFAULT_PLATFORM=linux/amd64 npx supabase start --debug",
+    "db:start:mac:debug": "export DOCKER_DEFAULT_PLATFORM=linux/amd64 && npx supabase start --debug",
     "db:stop": "npx supabase stop",
     "db:status": "npx supabase status",
-    "db:reset": "npx supabase db reset"
+    "db:reset": "npx supabase db reset",
+    "db:delete:docker-container-volume": "echo 'Checking Supabase status...' && (docker ps -q --filter \"name=supabase_*_nsc-events-expo-supabase\" > /dev/null && echo 'Stopping running Supabase containers...' && supabase stop --no-backup || echo 'No running Supabase containers found') && echo 'Removing any existing Supabase containers...' && (docker ps -a -q --filter \"name=supabase_*_nsc-events-expo-supabase\" | xargs -r docker rm -f || echo 'No containers to remove') && echo 'Removing any existing Supabase volumes...' && (docker volume ls -q --filter \"label=com.supabase.cli.project=nsc-events-expo-supabase\" | xargs -r docker volume rm || echo 'No volumes to remove') && echo 'Container and Volume cleanup completed successfully'",
+    "db:delete:docker-images": "docker rmi -f $(docker images 'public.ecr.aws/supabase/*' -q)"
 
   },
   "dependencies": {
