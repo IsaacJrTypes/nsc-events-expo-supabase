@@ -1,0 +1,48 @@
+import { Slot } from 'expo-router';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
+
+export default function RootLayout() {
+  return (
+    <View style={styles.container}>
+      {/* Navbar */}
+      <View style={styles.navbar}>
+        <Link href="/" >
+          <Pressable style={styles.navItem}>
+            <Text>Home</Text>
+          </Pressable>
+        </Link>
+        <Link href="/about">
+          <Pressable style={styles.navItem}>
+            <Text>About</Text>
+          </Pressable>
+        </Link>
+      </View>
+
+      {/* Page content */}
+      <View style={styles.content}>
+        <Slot />
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  navbar: {
+    flexDirection: 'row',
+    padding: 16,
+    backgroundColor: 'skyblue',
+    borderBottomWidth: 1,
+    borderBottomColor: '#2b2929',
+  },
+  navItem: {
+    marginRight: 20,
+  },
+  content: {
+    flex: 1,
+    backgroundColor: 'green'
+  },
+});
