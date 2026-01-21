@@ -6,16 +6,36 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "start:web": "expo start --web",
+    "start:web:cache": "expo start --web -c",
+    "db:start": "npx supabase start",
+    "db:start:mac": "export DOCKER_DEFAULT_PLATFORM=linux/amd64 npx supabase start",
+    "db:start:debug": "npx supabase start --debug",
+    "db:start:mac:debug": "export DOCKER_DEFAULT_PLATFORM=linux/amd64 npx supabase start --debug",
+    "db:stop": "npx supabase stop",
+    "db:status": "npx supabase status",
+    "db:reset": "npx supabase db reset"
+
   },
   "dependencies": {
+    "@expo/metro-runtime": "~6.1.2",
+    "@supabase/supabase-js": "2.91.0",
     "expo": "~54.0.31",
+    "expo-constants": "~18.0.13",
+    "expo-linking": "~8.0.11",
+    "expo-router": "~6.0.22",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
-    "react-native": "0.81.5"
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-url-polyfill": "^3.0.0",
+    "react-native-web": "^0.21.0"
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
+    "supabase": "^2.72.8",
     "typescript": "~5.9.2"
   },
   "private": true
