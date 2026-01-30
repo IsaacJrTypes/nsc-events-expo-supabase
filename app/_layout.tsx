@@ -17,6 +17,16 @@ export default function RootLayout() {
             <Text>About</Text>
           </Pressable>
         </Link>
+        <Link href="/login">
+          <Pressable style={styles.navItem}>
+            <Text>Login</Text>
+          </Pressable>
+        </Link>
+        <Link href="/signup">
+          <Pressable style={styles.navItem}>
+            <Text>Sign Up</Text>
+          </Pressable>
+        </Link>
       </View>
 
       {/* Page content */}
